@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiraNet - Unique Writing</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
+        
+        :root {
+            --primary: #7D5A50;
+            --secondary: #B4846C;
+            --accent: #E5B299;
+            --light: #FCDEC0;
+            --dark: #5D4037;
+            --sand: #E6D2B5;
+            --leaf: #4D8061;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        body {
+            background-color: var(--sand);
+            color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%237d5a50' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zm20.97 0l9.315 9.314-1.414 1.414L34.828 0h2.83zM22.344 0L13.03 9.314l1.414 1.414L25.172 0h-2.83zM32 0l12.142 12.142-1.414 1.414L30 .828 17.272 13.556l-1.414-1.414L28 0h4zM.284 0l28 28-1.414 1.414L0 2.544V0h.284zM0 5.373l25.456 25.455-1.414 1.415L0 8.2V5.374zm0 5.656l22.627 22.627-1.414 1.414L0 13.86v-2.83zm0 5.656l19.8 19.8-1.415 1.413L0 19.514v-2.83zm0 5.657l16.97 16.97-1.414 1.415L0 25.172v-2.83zM0 28l14.142 14.142-1.414 1.414L0 30.828V28zm0 5.657L11.314 44.97l-1.414 1.414L0 36.485v-2.83zm0 5.657L8.485 47.8l-1.414 1.414L0 42.142v-2.83zm0 5.657l5.657 5.657-1.414 1.415L0 47.8v-2.83zm0 5.657l2.828 2.83-1.414 1.413L0 53.456v-2.83zM54.627 60L30 35.373 5.373 60H8.2L30 38.2 51.8 60h2.827zm-5.656 0L30 41.03 11.03 60h2.828L30 43.858 46.142 60h2.83zm-5.656 0L30 46.686 16.686 60h2.83L30 49.515 40.485 60h2.83zm-5.657 0L30 52.343 22.344 60h2.83L30 55.172 34.828 60h2.83zM32 60l-2-2-2 2h4zM59.716 0l-28 28 1.414 1.414L60 2.544V0h-.284zM60 5.373L34.544 30.828l1.414 1.415L60 8.2V5.374zm0 5.656L37.373 33.656l1.414 1.414L60 13.86v-2.83zm0 5.656l-19.8 19.8 1.415 1.413L60 19.514v-2.83zm0 5.657l-16.97 16.97 1.414 1.415L60 25.172v-2.83zM60 28L45.858 42.142l1.414 1.414L60 30.828V28zm0 5.657L48.686 44.97l1.414 1.414L60 36.485v-2.83zm0 5.657L51.515 47.8l1.414 1.414L60 42.142v-2.83zm0 5.657l-5.657 5.657 1.414 1.415L60 47.8v-2.83zm0 5.657l-2.828 2.83 1.414 1.413L60 53.456v-2.83zM39.9 16.385l1.414-1.414L30 3.658 18.686 14.97l1.415 1.415 9.9-9.9 9.9 9.9zm-2.83 2.828l1.415-1.414L30 9.313 21.515 17.8l1.414 1.413L30 12.143l7.07 7.07zm-2.827 2.83l1.414-1.416L30 14.97l-5.657 5.657 1.414 1.415L30 17.8l4.243 4.242zm-2.83 2.827l1.415-1.414L30 20.626l-2.828 2.83 1.414 1.414L30 23.456l1.414 1.414zM56.87 59.414L58.284 58 30 29.716 1.716 58l1.414 1.414L30 32.544l26.87 26.87z' fill='%23b4846c' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--light);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            height: 40px;
+            width: 40px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background-color: var(--leaf);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--light);
+            color: var(--light);
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .content-wrapper {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            background-color: rgba(255,255,255,0.9);
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            border-radius: 0 0 8px 8px;
+        }
+        
+        /* Categories Sidebar */
+        .categories-sidebar {
+            width: 240px;
+            padding: 2rem 1rem;
+            background-color: rgba(252, 222, 192, 0.3);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.03);
+            border-radius: 0 0 0 8px;
+        }
+        
+        .categories-sidebar h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-item {
+            padding: 0.85rem 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            border-left: 3px solid transparent;
+        }
+        
+        .category-item:hover {
+            background-color: rgba(229, 178, 153, 0.2);
+            border-left: 3px solid var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .category-icon {
+            margin-right: 0.75rem;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .category-name {
+            flex: 1;
+            font-weight: 500;
+        }
+        
+        main {
+            flex: 1;
+            padding: 2rem 1.5rem;
+        }
+        
+        .books-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.75rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.6rem;
+        }
+        
+        .section-header a {
+            color: var(--leaf);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .section-header a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.8rem;
+        }
+        
+        .book-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            cursor: pointer;
+            border: 1px solid rgba(125, 90, 80, 0.1);
+        }
+        
+        .book-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .book-cover {
+            width: 100%;
+            height: 260px;
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .book-card:hover .book-cover img {
+            transform: scale(1.05);
+        }
+        
+        .book-info {
+            padding: 1.2rem;
+        }
+        
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .book-author {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .upload-btn-container {
+            text-align: center;
+            margin-right: 1rem;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 550px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+        
+        .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+        }
+        
+        .close {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+        
+        .close:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--light);
+            border-radius: 6px;
+            font-family: 'Raleway', sans-serif;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 5px rgba(229, 178, 153, 0.5);
+        }
+        
+        .form-submit {
+            text-align: right;
+            margin-top: 2rem;
+        }
+        
+        /* Reader modal */
+        .reader-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+        }
+        
+        .reader-content {
+            background-color: var(--sand);
+            width: 90%;
+            max-width: 850px;
+            height: 90%;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.4);
+        }
+        
+        .reader-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .reader-controls {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .reader-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2.5rem;
+            line-height: 1.8;
+            background-color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        
+        .reader-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            background-color: var(--light);
+            align-items: center;
+        }
+        
+        #page-info {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Make categories responsive */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .categories-sidebar {
+                width: 100%;
+                padding: 1.5rem 1rem;
+            }
+            
+            .category-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+            
+            .category-item {
+                padding: 0.6rem 0.8rem;
+                border: 1px solid var(--accent);
+                border-radius: 6px;
+                background-color: rgba(255,255,255,0.5);
+                width: calc(50% - 0.4rem);
+                justify-content: center;
+                margin-bottom: 0;
+            }
+            
+            .category-item:hover {
+                background-color: rgba(229, 178, 153, 0.2);
+                transform: translateY(-3px);
+                border-left: 1px solid var(--accent);
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links li {
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 5 C30 5 20 30 15 50 C10 70 12 90 50 95 C88 90 90 70 85 50 C80 30 70 5 50 5" fill="#FCDEC0" />
+                    <path d="M50 15 C45 25 35 25 30 40 C25 55 30 75 50 85 C70 75 75 55 70 40 C65 25 55 25 50 15" fill="#E5B299" />
+                    <path d="M50 25 C45 37 42 45 50 60 C58 45 55 37 50 25" fill="#7D5A50" />
+                    <path d="M50 60 C45 65 40 80 50 85 C60 80 55 65 50 60" fill="#4D8061" />
+                    <path d="M30 60 C25 65 20 80 30 85 C40 80 35 65 30 60" fill="#4D8061" />
+                    <path d="M70 60 C65 65 60 80 70 85 C80 80 75 65 70 60" fill="#4D8061" />
+                </svg>
+                TiraNet
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <div class="upload-btn-container">
+                <button class="btn btn-primary" id="upload-btn">Upload a Book</button>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="content-wrapper">
+        <!-- Categories Sidebar -->
+        <aside class="categories-sidebar">
+            <h3>Categories</h3>
+            <ul class="category-list">
+                <li class="category-item">
+                    <span class="category-icon">✍️</span>
+                    <span class="category-name">Short Stories</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">📝</span>
+                    <span class="category-name">Essays</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">📚</span>
+                    <span class="category-name">Novels</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">🎭</span>
+                    <span class="category-name">Drama</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">🖋️</span>
+                    <span class="category-name">Poetry</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">🎨</span>
+                    <span class="category-name">Creative Nonfiction</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">📰</span>
+                    <span class="category-name">Journalism</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">🌎</span>
+                    <span class="category-name">Travel Writing</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">🔮</span>
+                    <span class="category-name">Science Fiction</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">👻</span>
+                    <span class="category-name">Horror</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">💭</span>
+                    <span class="category-name">Memoir</span>
+                </li>
+                <li class="category-item">
+                    <span class="category-icon">✨</span>
+                    <span class="category-name">Fantasy</span>
+                </li>
+            </ul>
+        </aside>
+        
+        <main>
+            <section class="books-section">
+                <div class="section-header">
+                    <h2>Featured Works</h2>
+                    <a href="#">See All</a>
+                </div>
+                <div class="book-grid">
+                    <div class="book-card" data-book-id="1">
+                        <div class="book-cover">
+                            <img src="/api/placeholder/180/260" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Echoes of Tomorrow</div>
+                            <div class="book-author">By Jane Smith</div>
+                        </div>
+                    </div>
+                    <div class="book-card" data-book-id="2">
+                        <div class="book-cover">
+                            <img src="/api/placeholder/180/260" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Whispers in the Attic</div>
+                            <div class="book-author">By John Doe</div>
+                        </div>
+                    </div>
+                    <div class="book-card" data-book-id="3">
+                        <div class="book-cover">
+                            <img src="/api/placeholder/180/260" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Digital Reveries</div>
+                            <div class="book-author">By Alex Johnson</div>
+                        </div>
+                    </div>
+                    <div class="book-card" data-book-id="4">
+                        <div class="book-cover">
+                            <img src="/api/placeholder/180/260" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">The Unheard Symphony</div>
+                            <div class="book-author">By Maria Garcia</div>
+                        </div>
+                    </div>
+                    <div class="book-card" data-book-id="5">
+                        <div class="book-cover">
+                            <img src="/api/placeholder/180/260" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Beyond Horizons</div>
+                            <div class="book-author">By Tasha Lee</div>
+                        </div>
+                    </div>
+                    
